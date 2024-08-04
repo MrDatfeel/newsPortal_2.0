@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+
+{% block content %}
+  <h1>Новости</h1>
+  <ul>
+    {% for article in news %}
+      <li>
+        <h2><a href="{% url 'news_detail' article.id %}">{{ article.title|censor }}</a></h2>
+        <p>{{ article.publication_date }}</p>
+        <p>{{ article.text|truncatechars:20 }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
